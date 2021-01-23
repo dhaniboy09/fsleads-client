@@ -1,0 +1,150 @@
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false
+  },
+  "extends": [
+    "airbnb",
+    "plugin:compat/recommended",
+    "plugin:prettier/recommended",
+    "plugin:security/recommended",
+    "prettier/react",
+    "prettier"
+  ],
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "prettier",
+    "security"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ],
+    "camelcase": 1,
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-return-assign": [
+      "error",
+      "except-parens"
+    ],
+    "react/no-did-update-set-state": 0,
+    "jsx-a11y/anchor-is-valid": 1,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 1,
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "assert": "either"
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": [
+            "nesting",
+            "id"
+          ]
+        }
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/no-unescaped-entities": 0,
+    "react/forbid-prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "generator-star-spacing": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "class-methods-use-this": 1,
+    "max-len": [
+      "warn",
+      120
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ]
+  },
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolver": {
+      "webpack": {
+        "config": {
+          "resolve": {
+            "modules": [
+              "node_modules",
+              "src"
+            ],
+            "extensions": [
+              ".js",
+              ".json",
+              ".jsx",
+              ".ts",
+              ".tsx",
+              ".css"
+            ]
+          }
+        }
+      }
+    },
+    "polyfills": [
+      "Object",
+      "Array.from",
+      "Promise",
+      "Number"
+    ]
+  },
+  "globals": {
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "webpackIsomorphicTools": true,
+    "sinon": true,
+    "expect": true,
+    "ga": true,
+    "FB": true
+  }
+}
