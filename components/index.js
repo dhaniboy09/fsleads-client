@@ -106,6 +106,9 @@ class App extends React.Component {
       <div>
         <div className="row justify-content-center mt-10">
           <div className="col-auto w-80">
+            <div className="lead-count font-weight-bold color-info">
+              Lead Count: {leads.count ? leads.count : 0}
+            </div>
             <h1 className="page-title mb-5">fsleads Manager</h1>
             <button
               onClick={this.toggleShowAddLeadModal}
