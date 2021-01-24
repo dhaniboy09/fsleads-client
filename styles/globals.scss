@@ -5,8 +5,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Roboto,Helvetica Neue,Arial,Verdana,sans-serif;;
+  background: #f9f8f4;
 }
 
 a {
@@ -26,4 +26,70 @@ a {
   pointer-events: none !important;
   cursor: default;
   color: Gray;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.mt-10 {
+  margin-top: 12rem !important;
+}
+
+.button {
+  background-color: #c3e6cb;
+  border: .0625rem solid transparent;
+  border-radius: .25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 22px;
+  padding: 18px 34px;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: normal;
+  transition: background-color .1s cubic-bezier(.4, 0, .2, 1), border-color .1s cubic-bezier(.4, 0, .2, 1), color .1s cubic-bezier(.4, 0, .2, 1);
+}
+
+.button.button-pill {
+  border-radius: 500px;
+}
+
+.lead-form input, .input-group, #notes {
+  width: 300px;
+}
+
+.custom-pagination {
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  border-radius: 500px;
+  background-color: #c3e6cb;
+  padding: 18px 34px;
+}
+
+.page-link {
+  background-color: unset;
+  border: unset;
+}
+
+.border-right {
+  border-right: 1px solid #999999 !important;
+}
+
+.page-title {
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+h1.page-title {
+  position: absolute;
+  margin-top: -150px;
 }

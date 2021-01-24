@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
-import {validateNewLeadForm} from "../common/validation";
-import {appToast} from "../common/toast";
+import React, { useEffect, useState } from 'react';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { validateNewLeadForm } from '../common/validation';
+import { appToast } from '../common/toast';
 
 const LeadModal = (props) => {
   const {
@@ -13,49 +15,47 @@ const LeadModal = (props) => {
     headerText,
     initialFormState,
     toastMessage,
-    id = null
-  } = props
-  const [leadFields, setLeadFields] = useState(
-    initialFormState
-  )
+    id = null,
+  } = props;
+  const [leadFields, setLeadFields] = useState(initialFormState);
   const [formErrors, setFormErrors] = useState({});
 
-   useEffect(() => {
-      setLeadFields(initialFormState);
-  }, [showLeadModal])
+  useEffect(() => {
+    setLeadFields(initialFormState);
+  }, [showLeadModal]);
 
   const handleLead = async () => {
-    const errors = validateNewLeadForm(leadFields)
+    const errors = validateNewLeadForm(leadFields);
     if (!errors) {
       if (id) {
-        await actionFunction(leadFields, id)
+        await actionFunction(leadFields, id);
       } else {
-        await actionFunction(leadFields)
+        await actionFunction(leadFields);
       }
-      toggleShowLeadModal()
-      appToast.dark(toastMessage)
+      toggleShowLeadModal();
     } else {
-      setFormErrors(errors)
-      console.log(errors)
+      setFormErrors(errors);
     }
-  }
-
-  const onChange = ({target: {name, value}}) => {
-    setLeadFields({...leadFields, [name]: value});
   };
 
-  const hasErrorForField = field =>
-    formErrors.has && formErrors.has(field);
+  const onChange = ({ target: { name, value } }) => {
+    setLeadFields({ ...leadFields, [name]: value });
+  };
+
+  const hasErrorForField = (field) => formErrors.has && formErrors.has(field);
 
   return (
-    <Modal isOpen={showLeadModal} toggle={toggleShowLeadModal} size="xl" scrollable>
-      <ModalHeader toggle={toggleShowLeadModal}>
-        {headerText}
-      </ModalHeader>
+    <Modal
+      isOpen={showLeadModal}
+      toggle={toggleShowLeadModal}
+      size="l"
+      scrollable
+    >
+      <ModalHeader toggle={toggleShowLeadModal}>{headerText}</ModalHeader>
       <ModalBody>
-        <div className="row align-items-center">
-          <div className="col-md-12 align-self-center ">
-            <form>
+        <div className="row justify-content-center">
+          <div className="col-auto">
+            <form className="lead-form">
               <div className="form-row">
                 <div className="col-md-4 mb-3">
                   <label htmlFor="first_name">First Name</label>
@@ -70,14 +70,14 @@ const LeadModal = (props) => {
                     value={leadFields.first_name || ''}
                     onChange={onChange}
                   />
-                  {
-                    hasErrorForField('first_name') && (
-                      <div className="invalid-feedback">
-                        {formErrors.first('first_name')}
-                      </div>
-                    )
-
-                  }
+                  {hasErrorForField('first_name') && (
+                    <div
+                      className="invalid-feedback"
+                      id="invalid-feedback-first-name"
+                    >
+                      {formErrors.first('first_name')}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="form-row">
@@ -94,13 +94,14 @@ const LeadModal = (props) => {
                     value={leadFields.last_name || ''}
                     onChange={onChange}
                   />
-                  {
-                    hasErrorForField('last_name') && (
-                      <div className="invalid-feedback">
-                        {formErrors.first('last_name')}
-                      </div>
-                    )
-                  }
+                  {hasErrorForField('last_name') && (
+                    <div
+                      className="invalid-feedback"
+                      id="invalid-feedback-last-name"
+                    >
+                      {formErrors.first('last_name')}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="form-row">
@@ -108,7 +109,12 @@ const LeadModal = (props) => {
                   <label htmlFor="email">Email</label>
                   <div className="input-group">
                     <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend3">@</span>
+                      <span
+                        className="input-group-text"
+                        id="inputGroupPrepend3"
+                      >
+                        @
+                      </span>
                     </div>
                     <input
                       type="text"
@@ -122,13 +128,14 @@ const LeadModal = (props) => {
                       aria-describedby="inputGroupPrepend3"
                       onChange={onChange}
                     />
-                    {
-                      hasErrorForField('email') && (
-                        <div className="invalid-feedback">
-                          {formErrors.first('email')}
-                        </div>
-                      )
-                    }
+                    {hasErrorForField('email') && (
+                      <div
+                        className="invalid-feedback"
+                        id="invalid-feedback-email"
+                      >
+                        {formErrors.first('email')}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -145,32 +152,28 @@ const LeadModal = (props) => {
                     onChange={onChange}
                     placeholder="Notes"
                   />
-                  {
-                    hasErrorForField('notes') && (
-                      <div className="invalid-feedback">
-                        {formErrors.first('notes')}
-                      </div>
-                    )
-                  }
-
+                  {hasErrorForField('notes') && (
+                    <div className="invalid-feedback">
+                      {formErrors.first('notes')}
+                    </div>
+                  )}
                 </div>
               </div>
             </form>
           </div>
         </div>
-
       </ModalBody>
       <ModalFooter>
-        <Button
-          className="select-item"
-          color=""
+        <button
+          id="handle-lead-button"
           onClick={() => handleLead()}
+          className="button button-pill float-right"
         >
           {buttonText}
-        </Button>
+        </button>
       </ModalFooter>
     </Modal>
   );
-}
+};
 
-export default LeadModal
+export default LeadModal;
