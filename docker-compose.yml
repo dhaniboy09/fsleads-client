@@ -1,0 +1,22 @@
+version: '3.4'
+
+# This file is configured for use on local machine, and not for any CI/CD tool
+services:
+  web:
+    restart: always
+    build:
+      context: .
+    command: /sbin/tini -- sh -c 'npm run build && npm run start'
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    networks:
+      - fsleads_fs-net
+networks:
+  fsleads_fs-net:
+    external: true
