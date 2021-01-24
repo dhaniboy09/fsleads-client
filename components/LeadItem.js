@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import LeadModal from './LeadModal';
+import DeleteLeadModal from './DeleteLeadModal';
 
 const boolToYesNo = {
   false: 'No',
@@ -11,9 +12,14 @@ const boolToYesNo = {
 const LeadItem = (props) => {
   const { lead, updateLead, removeLead, rowClass } = props;
   const [showEditLeadModal, setShowEditLeadModal] = useState(false);
+  const [showDeleteLeadModal, setDeleteLeadModal] = useState(false);
 
   const toggleShowEditLeadModal = () => {
     setShowEditLeadModal((prevState) => !prevState);
+  };
+
+  const toggleShowDeleteLeadModal = () => {
+    setDeleteLeadModal((prevState) => !prevState);
   };
 
   return (
@@ -39,7 +45,7 @@ const LeadItem = (props) => {
             size="sm"
             className="ml-3 cursor-pointer"
             id="remove-lead"
-            onClick={() => removeLead(lead.id)}
+            onClick={() => toggleShowDeleteLeadModal()}
           />
         </td>
       </tr>
@@ -57,6 +63,12 @@ const LeadItem = (props) => {
           email: lead.email,
           notes: lead.notes,
         }}
+      />
+      <DeleteLeadModal
+        showDeleteLeadModal={showDeleteLeadModal}
+        toggleShowDeleteLeadModal={toggleShowDeleteLeadModal}
+        deleteLead={removeLead}
+        id={lead.id}
       />
     </>
   );

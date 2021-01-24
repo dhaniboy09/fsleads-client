@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme/build';
 import LeadItem from './LeadItem';
 import LeadModal from './LeadModal';
+import DeleteLeadModal from './DeleteLeadModal';
 
 const props = {
   lead: {
@@ -24,15 +25,15 @@ describe('Test LeadItem', () => {
     expect(wrapper.find('#has-been-contacted').text()).toEqual('No');
   });
 
-  it('should correctly remove lead', () => {
-    const wrapper = mount(<LeadItem {...props} />);
-    wrapper.find('#remove-lead').at(1).simulate('click');
-    expect(props.removeLead).toHaveBeenCalled();
-  });
-
   it('should open lead modal when lead edit icon is clicked', () => {
     const wrapper = mount(<LeadItem {...props} />);
     wrapper.find('#update-lead').at(1).simulate('click');
     expect(wrapper.find(LeadModal)).toHaveLength(1);
+  });
+
+  it('should open delete lead modal when lead delete icon is clicked', () => {
+    const wrapper = mount(<LeadItem {...props} />);
+    wrapper.find('#remove-lead').at(1).simulate('click');
+    expect(wrapper.find(DeleteLeadModal)).toHaveLength(1);
   });
 });
