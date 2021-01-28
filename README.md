@@ -3,7 +3,8 @@
 ### Running the app
 
 - Ensure the [fsleads](https://github.com/dhaniboy09/fsleads) service is up and running
--  `cd` into the project directory, 
+- Clone the repository by running: `git clone git@github.com:dhaniboy09/fsleads-client.git`
+-  `cd` into the project directory by running: `cd fsleads-client`
 - Copy the env vars below and run `pbpaste > .env`. Alternatively, run `touch .env` and manually paste the env vars below in the newly created `.env` file
     ```bash
     LEADS_API_KEY=M6ol0RI47FDANo8wAnBxYw6ZVBbi61whq6wYOKpi
