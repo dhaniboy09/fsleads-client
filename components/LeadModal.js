@@ -16,9 +16,9 @@ const LeadModal = (props) => {
   const [leadFields, setLeadFields] = useState(initialFormState);
   const [formErrors, setFormErrors] = useState({});
 
-  useEffect(() => {
-    setLeadFields(initialFormState);
-  }, [showLeadModal]);
+  // useEffect(() => {
+  //   setLeadFields(initialFormState);
+  // }, [showLeadModal]);
 
   const handleLead = async () => {
     const errors = validateNewLeadForm(leadFields);
@@ -29,9 +29,17 @@ const LeadModal = (props) => {
         await actionFunction(leadFields);
       }
       toggleShowLeadModal();
+      setLeadFields(initialFormState);
+      setFormErrors({});
     } else {
       setFormErrors(errors);
     }
+  };
+
+  const toggleModal = () => {
+    setLeadFields(initialFormState);
+    setFormErrors({});
+    toggleShowLeadModal();
   };
 
   const onChange = ({ target: { name, value } }) => {
@@ -41,13 +49,8 @@ const LeadModal = (props) => {
   const hasErrorForField = (field) => formErrors.has && formErrors.has(field);
 
   return (
-    <Modal
-      isOpen={showLeadModal}
-      toggle={toggleShowLeadModal}
-      size="l"
-      scrollable
-    >
-      <ModalHeader toggle={toggleShowLeadModal}>{headerText}</ModalHeader>
+    <Modal isOpen={showLeadModal} toggle={toggleModal} size="l" scrollable>
+      <ModalHeader toggle={toggleModal}>{headerText}</ModalHeader>
       <ModalBody>
         <div className="row justify-content-center">
           <div className="col-auto">

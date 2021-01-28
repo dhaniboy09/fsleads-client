@@ -66,7 +66,7 @@ describe('Test Index', () => {
     wrapper.find('#first_name').simulate('change', mockEventFirstName);
     wrapper.find('#last_name').simulate('change', mockEventLastName);
 
-    wrapper.find('#handle-lead-button').at(1).simulate('click');
+    wrapper.find('#handle-lead-button').simulate('click');
 
     await act(async () => {
       await jest.runAllTicks();

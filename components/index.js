@@ -77,12 +77,9 @@ class App extends React.Component {
   };
 
   toggleShowAddLeadModal = () => {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        showAddLeadModal: !prevState.showAddLeadModal,
-      };
-    });
+    this.setState((prevState) => ({
+      showAddLeadModal: !prevState.showAddLeadModal,
+    }));
   };
 
   getLeadsFromURI = async (uri) => {

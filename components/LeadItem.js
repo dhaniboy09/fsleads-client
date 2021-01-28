@@ -54,7 +54,7 @@ const LeadItem = (props) => {
         showLeadModal={showEditLeadModal}
         toggleShowLeadModal={toggleShowEditLeadModal}
         actionFunction={updateLead}
-        buttonText="Edit"
+        buttonText="Save"
         headerText="Edit Lead"
         toastMessage="Lead Edited Successfully"
         initialFormState={{

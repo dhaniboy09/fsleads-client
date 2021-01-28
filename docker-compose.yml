@@ -16,7 +16,7 @@ services:
     env_file:
       - .env
     networks:
-      - fsleads_fs-net
+      - fsleads_fsbackend
 networks:
-  fsleads_fs-net:
+  fsleads_fsbackend:
     external: true

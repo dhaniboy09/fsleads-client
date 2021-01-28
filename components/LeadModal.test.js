@@ -17,7 +17,7 @@ const props = {
 describe('Test LeadItem', () => {
   it('should correctly validate empty fields', () => {
     const wrapper = mount(<LeadModal {...props} />);
-    wrapper.find('#handle-lead-button').at(1).simulate('click');
+    wrapper.find('#handle-lead-button').simulate('click');
     expect(wrapper.find('#invalid-feedback-first-name').text()).toEqual(
       'This field is required',
     );
@@ -33,7 +33,7 @@ describe('Test LeadItem', () => {
     const wrapper = mount(<LeadModal {...props} />);
     const mockEvent = { target: { name: 'email', value: 'a@' } };
     wrapper.find('#email').simulate('change', mockEvent);
-    wrapper.find('#handle-lead-button').at(1).simulate('click');
+    wrapper.find('#handle-lead-button').simulate('click');
     expect(wrapper.find('#invalid-feedback-email').text()).toEqual(
       'Please enter a valid email',
     );
@@ -50,7 +50,7 @@ describe('Test LeadItem', () => {
     wrapper.find('#first_name').simulate('change', mockEventFirstName);
     wrapper.find('#last_name').simulate('change', mockEventLastName);
 
-    wrapper.find('#handle-lead-button').at(1).simulate('click');
+    wrapper.find('#handle-lead-button').simulate('click');
     expect(props.actionFunction).toHaveBeenCalledWith({
       first_name: 'Test',
       last_name: 'User',
@@ -59,7 +59,7 @@ describe('Test LeadItem', () => {
     });
   });
 
-  it('should call action function with the correct params when is not null', () => {
+  it('should call action function with the correct params when id is not null', () => {
     props.id = '1234567890';
     const wrapper = mount(<LeadModal {...props} />);
     const mockEventEmail = { target: { name: 'email', value: 'a@b.com' } };
@@ -71,7 +71,7 @@ describe('Test LeadItem', () => {
     wrapper.find('#first_name').simulate('change', mockEventFirstName);
     wrapper.find('#last_name').simulate('change', mockEventLastName);
 
-    wrapper.find('#handle-lead-button').at(1).simulate('click');
+    wrapper.find('#handle-lead-button').simulate('click');
     expect(props.actionFunction).toHaveBeenCalledWith(
       {
         first_name: 'Test',
