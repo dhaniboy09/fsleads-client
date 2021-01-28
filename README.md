@@ -4,8 +4,7 @@
 
 - Ensure the [fsleads](https://github.com/dhaniboy09/fsleads) service is up and running
 -  `cd` into the project directory, 
-- Run `touch .env`
-- Copy and paste the following into the newly created `.env` file
+- Copy the env vars below and run `pbpaste > .env`. Alternatively, run `touch .env` and manually paste the env vars below in the newly created `.env` file
     ```bash
     LEADS_API_KEY=M6ol0RI47FDANo8wAnBxYw6ZVBbi61whq6wYOKpi
     ```
