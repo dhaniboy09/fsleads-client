@@ -10,6 +10,9 @@
     LEADS_API_KEY=M6ol0RI47FDANo8wAnBxYw6ZVBbi61whq6wYOKpi
     ```
 - Next, run `nvm use`
-- Start the container with `docker-compose up`
+- Run `npm install`
+- Start the container with `docker-compose up`. 
+    - If you get this error: `Cannot find module 'sharp'`, please re-build the container with `docker-compose up --build --no-cache`. 
+    The download for that package sometimes times out.
 - The app should now be accessible on `http://localhost:3000`
  

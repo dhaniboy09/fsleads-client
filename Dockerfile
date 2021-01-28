@@ -4,8 +4,6 @@ WORKDIR /app
 
 RUN apk update && apk upgrade && apk add --no-cache \
   build-base \
-  python \
-  cyrus-sasl-dev \
   tini
 
 COPY package.json .
@@ -59,7 +57,5 @@ COPY package.json .
 FROM run AS test
 
 WORKDIR /app
-
-COPY tests tests
 
 COPY jest.setup.js .
